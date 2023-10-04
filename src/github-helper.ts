@@ -60,7 +60,7 @@ export async function createPullRequest(
         pull_request.number.toString()
       )
     }
-    core.info(`Using body '${body}'`)
+    core.info(`Using body lalla '${body}'`)
 
     // Create PR
     const pull = await octokit.rest.pulls.create({
