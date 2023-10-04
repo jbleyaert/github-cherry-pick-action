@@ -71,9 +71,11 @@ export async function createPullRequest(
       title,
       body,
       author: {
-        email: `${inputs.author}@users.noreply.github.com`
+        email: inputs.author
       }
     })
+
+    core.info(`Created pull request #${pull.data.user}`)
 
     // Apply labels
     const appliedLabels = inputs.labels
