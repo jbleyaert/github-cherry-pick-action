@@ -68,7 +68,17 @@ export async function createPullRequest(
       head: prBranch,
       base: inputs.branch,
       title,
-      body
+      body,
+      author: {
+        name: 'Alexander Mol',
+        email: 'azertyalex@hotmail.com',
+        date: new Date().toISOString() // must be ISO date string
+      },
+      committer: {
+        name: 'Alexander Mol',
+        email: 'azertyalex@hotmail.com',
+        date: new Date().toISOString() // must be ISO date string
+      }
     })
 
     // Apply labels
