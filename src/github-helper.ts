@@ -71,7 +71,14 @@ export async function createPullRequest(
       title,
       body,
       author: {
-        email: inputs.author
+        name: 'Alexander Mol',
+        email: 'azertyalex@hotmail.com',
+        date: new Date().toISOString() // must be ISO date string
+      },
+      committer: {
+        name: 'Alexander Mol',
+        email: 'azertyalex@hotmail.com',
+        date: new Date().toISOString() // must be ISO date string
       }
     })
 
