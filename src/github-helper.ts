@@ -1,6 +1,6 @@
 import * as github from '@actions/github'
 import * as core from '@actions/core'
-import {PullRequest} from '@octokit/webhooks-definitions/schema'
+import {PullRequest} from '@octokit/webhooks-types'
 
 const ERROR_PR_REVIEW_FROM_AUTHOR =
   'Review cannot be requested from pull request author'
@@ -26,6 +26,7 @@ export async function createPullRequest(
   prBranch: string
 ): Promise<any> {
   const octokit = github.getOctokit(inputs.token)
+
   if (!github.context.payload) {
     core.info(`Error: no payload in github.context`)
     return
@@ -68,7 +69,10 @@ export async function createPullRequest(
       head: prBranch,
       base: inputs.branch,
       title,
-      body
+      body,
+      author: {
+        email: `${inputs.author}@users.noreply.github.com`
+      }
     })
 
     // Apply labels
